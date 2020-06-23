@@ -19,9 +19,23 @@ class TestRiver < Minitest::Test
         @fish5 = Fish.new("Haddock")
     end
 
+    def test_get_river_name()
+        assert_equal("River Forth", @river1.river_name())
+    end
+    
+    def test_get_fish_list()
+        assert_equal([], @river2.fish_list())
+    end
+    
     def test_add_fish_to_river()
         @river1.add_fish_to_river(@fish1)
         assert_equal(1, @river1.fish_list().count())
+    end
+
+    def test_find_fish_by_name()
+        @river2.add_fish_to_river(@fish5)
+        @river2.find_fish_by_name(@fish5)
+        assert_equal("Haddock", @fish5.fish_name())
     end
 
     def test_remove_fish_from_river()
