@@ -9,6 +9,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new()
 class TestRiver < Minitest::Test
 
     def setup()
+        @bear1 = Bear.new("Cuddles", "Grizzly")
         @river1 = River.new("River Forth")
         @river2 = River.new("River Tay")
         @fish1 = Fish.new("Trout")
@@ -31,4 +32,12 @@ class TestRiver < Minitest::Test
         assert_equal(2, @river1.fish_list().count())
     end
 
+    def test_eat_fish()
+        @river1.add_fish_to_river(@fish2)
+        @river1.add_fish_to_river(@fish3)
+        @river1.add_fish_to_river(@fish4)
+        @bear1.eat_fish(@river1)
+        assert_equal(2, @river1.fish_list().count())
+        assert_equal(1, @bear1.stomach_contents().count())
+    end
 end
