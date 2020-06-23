@@ -26,6 +26,10 @@ class TestRiver < Minitest::Test
     def test_get_fish_list()
         assert_equal([], @river2.fish_list())
     end
+
+    def test_get_bear_name()
+        assert_equal("Cuddles", @bear1.bear_name())
+    end
     
     def test_add_fish_to_river()
         @river1.add_fish_to_river(@fish1)
@@ -45,7 +49,7 @@ class TestRiver < Minitest::Test
         @river1.remove_fish_from_river(@fish4)
         assert_equal(2, @river1.fish_list().count())
     end
-
+    
     def test_eat_fish()
         @river1.add_fish_to_river(@fish2)
         @river1.add_fish_to_river(@fish3)
@@ -53,5 +57,20 @@ class TestRiver < Minitest::Test
         @bear1.eat_fish(@river1)
         assert_equal(2, @river1.fish_list().count())
         assert_equal(1, @bear1.stomach_contents().count())
+    end
+
+    def test_roar()
+        @bear1.roar()
+        assert_equal("*roars*", @bear1.roar())
+    end
+
+    def test_fish_count()
+        @river2.add_fish_to_river(@fish3)
+        assert_equal(1, @river2.fish_count(@river2))
+    end
+
+    def test_food_count()
+        @bear1.eat_fish(@river1)
+        assert_equal(1, @bear1.food_count(@bear1))
     end
 end

@@ -14,4 +14,11 @@ class Bear
         river.remove_fish_from_river(eaten_fish)
     end
 
+    def roar()
+        return "*roars*"
+    end
+
+    def food_count(bear)
+        return @stomach_contents.count()
+    end
 end

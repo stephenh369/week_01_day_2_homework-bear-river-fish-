@@ -18,4 +18,8 @@ class River
     def find_fish_by_name(fish_name)
         return fish_name.fish_name()
     end
+
+    def fish_count(river_name)
+        return river_name.fish_list().count()
+    end
 end
